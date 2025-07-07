@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registration page</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgb(194, 249, 252);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 20px;
+
+
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201101/pngtree-scene-with-geometrical-forms-the-poster-model-minimal-background-render-image_452981.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        .registration-box, .thankyou-box {
+            background-color: white;
+            padding: 30px 40px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 350px;
+            max-height: 80vh;      
+            overflow-y: auto;      
+            text-align: center;
+        }
+
+
+        h1, h3 {
+            margin: 0 0 20px 0;
+        }
+
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            background-color: #2196F3;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        input[type="submit"]:hover {
+            background-color: #0b7dda;
+        }
+
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="registration-box" id="registrationBox">
+        <h1>Registration form</h1>
+        <h3>Please fill in your details</h3>
+        <form id="registrationForm">
+            <label for="firstname">First name:</label>
+            <input type="text" id="firstname" name="firstname" required />
+
+
+            <label for="lastname">Last name:</label>
+            <input type="text" id="lastname" name="lastname" required />
+
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+
+            <label for="phone">Phone number:</label>
+            <input type="tel" id="phone" name="phone" required />
+
+
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" name="gender" required />
+
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required />
+
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required />
+
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required />
+
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required />
+            <div id="passwordError" class="error" style="display:none;">Passwords do not match.</div>
+
+
+            <label for="course">Choose a course:</label>
+            <select name="course" id="course" required>
+                <option value="">--Select--</option>
+                <option value="cse">CSE</option>
+                <option value="aiml">AIML</option>
+                <option value="ece">ECE</option>
+                <option value="eee">EEE</option>
+            </select>
+
+
+            <input type="submit" value="Register" />
+        </form>
+    </div>
+
+
+   
+    <div class="thankyou-box" id="thankyouBox" style="display: none;">
+        <h1>Thank you for registering!</h1>
+    </div>
+
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const registrationBox = document.getElementById('registrationBox');
+        const thankyouBox = document.getElementById('thankyouBox');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const passwordError = document.getElementById('passwordError');
+
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                passwordError.style.display = 'block';
+                return;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+
+            registrationBox.style.display = 'none';
+            thankyouBox.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
